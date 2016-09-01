@@ -1,8 +1,8 @@
-
 #!/bin/sh
 #Author:nortorm
 #Date:2016/08/30
 #Function:install_php.sh
+
 . /etc/init.d/functions
   
 function InstallPhp(){

@@ -4,6 +4,7 @@
 @Date:2016/07/08
 @Explanation:install_mysql.sh
 !
+
 . /etc/init.d/functions
 
 function MysqlInstall(){
