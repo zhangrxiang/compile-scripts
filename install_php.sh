@@ -7,7 +7,7 @@
   
 function InstallPhp(){
     
-    phpSourceUrl=https://github.com/php/php-src/archive/php-5.4.43.tar.gz
+    phpSourceUrl=https://downloads.php.net/~stas/php-5.4.45.tar.gz
 
     #afresh refresh yum repolist
     yum -y install epel-release
