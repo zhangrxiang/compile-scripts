@@ -6,10 +6,7 @@
 #source function
 . /etc/init.d/functions
   
-#set jdk and tomcat source url
-jdkTgzVer=http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz
-tomcatTgzVer=http://mirror.rise.ph/apache/tomcat/tomcat-8/v8.5.4/bin/apache-tomcat-8.5.4.tar.gz
- 
+
 function err_echo(){
     echo -e "\e[91m[Error]: $1 \e[0m"
     exit 1
@@ -31,7 +28,10 @@ function check_exit(){
 }
  
 #download jdk and tomcat tgz file
-function Download(){
+function DownloadTgz(){
+    #set jdk and tomcat source url
+    jdkTgzVer=http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz
+    tomcatTgzVer=http://mirror.rise.ph/apache/tomcat/tomcat-8/v8.5.4/bin/apache-tomcat-8.5.4.tar.gz
     #set software download dir
     softwareTmpDir=/tmp
     #test -d ${softwareTmpDir} && rm -rf ${softwareTmpDir}
@@ -81,7 +81,7 @@ EOF
 }
  
 function Main(){
-    Download
+    DownloadTgz
     check_exit "jdk or tomcat download failed, break process running！"
     InstallJdk
     check_exit "jdk install failed, exit！"

@@ -7,6 +7,8 @@
   
 function InstallPhp(){
     
+    phpSourceUrl=https://github.com/php/php-src/archive/php-5.4.43.tar.gz
+
     #afresh refresh yum repolist
     yum -y install epel-release
     #yum clean all
@@ -25,8 +27,8 @@ function InstallPhp(){
     libjpeg-devel curl curl-devel tcl* libxml2-devel gmp-devel libjpeg* libpng freetype libjpeg-devel libpng-devel \
     freetype-devel  libmcrypt libmcrypt-devel bzip2 bzip2-devel libevent-devel pcre pcre-devel zlib* openssl-devel lua* git tcl \
     tcl-devel openssl-devel openssl popt-devel popt  
+    
     #install php
-    phpSourceUrl=https://github.com/php/php-src/archive/php-5.4.43.tar.gz
     cd /tmp
     phpTgzName=`basename ${phpSourceUrl}`
     test -f ${phpTgzName} && rm -rf ${phpTgzName}
@@ -51,7 +53,9 @@ function ConfigPhp(){
     source /etc/profile.d/php.sh
 }
 function InstallHidef(){
+    
     hidefSourceUrl=http://pecl.php.net/get/hidef-0.1.8.tgz
+    
     cd /tmp
     hidefTgzName=`basename ${hidefTgzName}`
     test -f ${hidefTgzName} && rm -rf ${hidefTgzName}
