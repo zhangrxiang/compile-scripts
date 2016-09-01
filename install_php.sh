@@ -44,14 +44,17 @@ function InstallPhp(){
     --enable-mbregex --with-mhash --enable-bcmath --enable-zip --with-pcre-regex --with-gd=/usr/local/libgd/ \
     --enable-gd-native-ttf --with-jpeg-dir --with-png-dir --with-freetype-dir
     make
-    make install   
+    make install 
 }
+
 function ConfigPhp(){
     cp /usr/local/src/${phpSrcDir}/php.ini-development /usr/local/php/etc/php.ini
     cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
     echo "export PATH=\$PATH:/usr/local/php/bin:/usr/local/php/sbin" > /etc/profile.d/php.sh
     source /etc/profile.d/php.sh
 }
+
+:<<EOF
 function InstallHidef(){
     
     hidefSourceUrl=http://pecl.php.net/get/hidef-0.1.8.tgz
@@ -70,9 +73,12 @@ function InstallHidef(){
     sed -i '/extension=msql.so/aextension=hidef.so\nhidef.ini_path = \/usr\/local\/php\/etc\/' /usr/local/php/etc/php.ini
     touch /usr/local/php/etc/hidef.ini
 }
+EOF
+
 function Main(){
     InstallPhp
     ConfigPhp
-    InstallHidef   
+    #InstallHidef   
 }
+
 Main 2>&1 | tee -a /tmp/$0_exec.log
