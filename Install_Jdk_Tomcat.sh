@@ -1,7 +1,7 @@
 #!/bin/sh
 #Author:Nortorm
 #Date:2016/08/29
-#Function:Install_Jdk_Tomcat.sh
+#Function:install_jdk_tomcat.sh
  
 #source function
 . /etc/init.d/functions
