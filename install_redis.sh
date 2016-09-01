@@ -31,16 +31,17 @@ function ConfigRedis(){
     
     #set redis version
     set redisVer "redis-3.2.3"
+    set redisPort "6379"
     
     spawn sh /usr/local/src/${redisVer}/utils/install_server.sh
     expect "6379]"
-    send "6379\r"
+    send "${redisPort}\r"
     expect "/etc/redis/6379.conf]" 
-    send "/usr/local/redis/conf/6379.conf\r"
+    send "/usr/local/redis/conf/${redisPort}.conf\r"
     expect "/var/log/redis_6379.log]" 
-    send "/usr/local/redis/log/redis_6379.log\r"
+    send "/usr/local/redis/log/redis_${redisPort}.log\r"
     expect "/var/lib/redis/6379]" 
-    send "/usr/local/redis/data/6379\r"
+    send "/usr/local/redis/data/${redisPort}\r"
     expect "/usr/local/redis/bin/redis-server]" 
     send "/usr/local/redis/bin/redis-server\r"
     expect "Ctrl-C to abort."
